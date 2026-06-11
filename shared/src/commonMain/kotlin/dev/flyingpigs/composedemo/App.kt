@@ -30,14 +30,13 @@ fun App() {
         var submittedName by remember { mutableStateOf("") }
         val focusManager = LocalFocusManager.current
         Scaffold(
-            topBar = { AppTopBar(
-            ) },
+            topBar = { AppTopBar() },
             containerColor = Color(red = 187, green = 134, blue = 252),
-            content = {
-                innerPadding ->
+            floatingActionButton = { AppFloatingActionButton() },
+            content = { innerPadding ->
                 Surface(
-                    color = Color(red = 187, green = 134, blue = 252),
-                    modifier = Modifier.fillMaxSize()) {
+                    color = Color(red = 187, green = 134, blue = 252), modifier = Modifier.fillMaxSize()
+                ) {
 
                     Column(
                         modifier = Modifier.padding(innerPadding).fillMaxSize().pointerInput(Unit) {
@@ -73,6 +72,7 @@ fun App() {
                         ) {
                             Text("Click me!")
                         }
+                        ShowLazyRowSample()
                     }
                 }
             },
