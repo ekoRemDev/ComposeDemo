@@ -1,4 +1,4 @@
-package dev.flyingpigs.composedemo
+package dev.flyingpigs.composedemo.ui.components
 
 
 fun randomTaskButton(): Int {

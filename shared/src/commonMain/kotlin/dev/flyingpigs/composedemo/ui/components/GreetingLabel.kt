@@ -1,4 +1,4 @@
-package dev.flyingpigs.composedemo
+package dev.flyingpigs.composedemo.ui.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text

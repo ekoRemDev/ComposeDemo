@@ -1,4 +1,6 @@
-package dev.flyingpigs.composedemo
+package dev.flyingpigs.composedemo.ui.components
+
+import dev.flyingpigs.composedemo.ui.samples.ShowAlertDialogSample
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack

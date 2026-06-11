@@ -1,4 +1,4 @@
-package dev.flyingpigs.composedemo
+package dev.flyingpigs.composedemo.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size

@@ -1,4 +1,4 @@
-package dev.flyingpigs.composedemo
+package dev.flyingpigs.composedemo.ui.samples
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

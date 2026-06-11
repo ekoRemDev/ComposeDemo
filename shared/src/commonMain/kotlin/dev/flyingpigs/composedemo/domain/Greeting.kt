@@ -1,4 +1,6 @@
-package dev.flyingpigs.composedemo
+package dev.flyingpigs.composedemo.domain
+
+import dev.flyingpigs.composedemo.getPlatform
 
 class Greeting {
     private val platform = getPlatform()
