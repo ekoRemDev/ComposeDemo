@@ -5,7 +5,16 @@ against the **ComposeDemo** project. Update the checkboxes as we go.
 
 > Legend: ✅ done · 🔶 partial · ⬜ not started · 🎯 recommended next
 
-Last updated: 2026-06-18 (added Splash → Welcome → Main nested-navigation flow)
+Last updated: 2026-06-18 (consolidated all learning notes under `learnPath/`)
+
+---
+
+## Topic notes (deep dives)
+
+This README is the index/roadmap; each file below is a focused deep dive captured
+as questions come up.
+
+- [navigation-screen-order.md](navigation-screen-order.md) — what defines which screen shows, and in which order (`startDestination` vs `composable<>` vs `navigate()`).
 
 ---
 
