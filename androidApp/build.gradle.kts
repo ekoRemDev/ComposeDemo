@@ -19,6 +19,7 @@ dependencies {
 
     implementation(libs.compose.uiToolingPreview)
     debugImplementation(libs.compose.uiTooling)
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }
 
 android {

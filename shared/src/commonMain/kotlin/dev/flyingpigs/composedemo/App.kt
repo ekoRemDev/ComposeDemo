@@ -1,53 +1,60 @@
 package dev.flyingpigs.composedemo
 
-import dev.flyingpigs.composedemo.ui.components.AppBottomBar
-import dev.flyingpigs.composedemo.ui.components.AppFloatingActionButton
-import dev.flyingpigs.composedemo.ui.components.AppTopBar
-import dev.flyingpigs.composedemo.ui.screens.FavoritesScreen
-import dev.flyingpigs.composedemo.ui.screens.HomeScreen
-import dev.flyingpigs.composedemo.ui.screens.ProfileScreen
-import dev.flyingpigs.composedemo.ui.screens.SearchScreen
-import dev.flyingpigs.composedemo.ui.screens.SettingsScreen
-
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import dev.flyingpigs.composedemo.ui.navigation.Main
+import dev.flyingpigs.composedemo.ui.navigation.Splash
+import dev.flyingpigs.composedemo.ui.navigation.Welcome
+import dev.flyingpigs.composedemo.ui.screens.SplashScreen
+import dev.flyingpigs.composedemo.ui.screens.WelcomeScreen
 
+/**
+ * Root router. Three full-screen, chrome-less destinations:
+ *
+ *   Splash  ──(after delay)──▶  Welcome  ──(Get Started)──▶  Main
+ *
+ * Each forward step uses popUpTo(..., inclusive = true) so the previous
+ * destination is removed from the back stack — once you reach Main, pressing
+ * back exits the app instead of returning to Welcome/Splash.
+ *
+ * Main is itself a screen that hosts the tabbed Scaffold (see MainScreen),
+ * so the bottom bar / top bar only appear inside Main — nested navigation.
+ */
 @Composable
 @Preview
 fun App() {
+    val rootNavController = rememberNavController()
+
     MaterialTheme {
-        var selectedTab by remember { mutableStateOf(0) }
-        Scaffold(
-            topBar = { AppTopBar() },
-            bottomBar = {
-                AppBottomBar(
-                    selectedTab = selectedTab,
-                    onTabSelected = { selectedTab = it },
+        NavHost(
+            navController = rootNavController,
+            startDestination = Splash,
+        ) {
+            composable<Splash> {
+                SplashScreen(
+                    onTimeout = {
+                        rootNavController.navigate(Welcome) {
+                            popUpTo(Splash) { inclusive = true }
+                        }
+                    },
                 )
-            },
-            containerColor = Color(red = 187, green = 134, blue = 252),
-            floatingActionButton = { AppFloatingActionButton() },
-            content = { innerPadding ->
-                Surface(
-                    color = Color(red = 187, green = 134, blue = 252),
-                    modifier = Modifier.fillMaxSize().padding(innerPadding),
-                ) {
-                    when (selectedTab) {
-                        0 -> HomeScreen()
-                        1 -> SearchScreen()
-                        2 -> FavoritesScreen()
-                        3 -> ProfileScreen()
-                        4 -> SettingsScreen()
-                    }
-                }
-            },
-        )
+            }
+            composable<Welcome> {
+                WelcomeScreen(
+                    onContinue = {
+                        rootNavController.navigate(Main) {
+                            popUpTo(Welcome) { inclusive = true }
+                        }
+                    },
+                )
+            }
+            composable<Main> {
+                MainScreen()
+            }
+        }
     }
 }

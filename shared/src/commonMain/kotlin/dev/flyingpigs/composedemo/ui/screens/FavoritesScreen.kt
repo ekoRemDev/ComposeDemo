@@ -1,5 +1,6 @@
 package dev.flyingpigs.composedemo.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun FavoritesScreen() {
+fun FavoritesScreen(onFavoriteClick: (String) -> Unit) {
     val favorites = listOf("Kotlin", "Compose Multiplatform", "Material 3", "Gradle", "Coroutines")
 
     LazyColumn(
@@ -22,6 +23,7 @@ fun FavoritesScreen() {
     ) {
         items(favorites) { favorite ->
             ListItem(
+                modifier = Modifier.clickable { onFavoriteClick(favorite)},
                 headlineContent = { Text(favorite) },
                 leadingContent = {
                     Icon(Icons.Default.Favorite, contentDescription = null)

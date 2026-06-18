@@ -8,9 +8,11 @@ import dev.flyingpigs.composedemo.ui.samples.ShowLazyRowSample
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -38,7 +40,11 @@ fun HomeScreen() {
         },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Logo()
+        Row {
+            Logo(modifier = Modifier.size(32.dp))
+            Logo(modifier = Modifier.size(64.dp))
+        }
+
         Text("Hello $submittedName")
         AnimatedVisibility(showContent) {
             val greeting = remember { Greeting().greet() }
