@@ -18,6 +18,8 @@ as questions come up.
 - [ios-change-app-name.md](ios-change-app-name.md) — change the iOS home-screen app name via `CFBundleDisplayName` (and why not to touch `PRODUCT_NAME`).
 - [app-versioning.md](app-versioning.md) — how versioning works in KMP vs Flutter's pubspec.yaml; `gradle.properties` single-source setup for Android.
 - [show-version-in-shared-ui.md](show-version-in-shared-ui.md) — display the app version in shared Compose UI via a Gradle-generated `BuildConfig.kt`.
+- [remember-and-mutablestate.md](remember-and-mutablestate.md) — Compose's state primitive: `mutableStateOf` (observable) + `remember` (survives recomposition) + the `by` delegate; recomposition model and gotchas.
+- [state-hoisting-and-scaling.md](state-hoisting-and-scaling.md) — hoisting shared state to a common parent (FAB → HomeScreen toggle guide), and why it stops scaling → ViewModel + scoping (Phase 1).
 
 ---
 

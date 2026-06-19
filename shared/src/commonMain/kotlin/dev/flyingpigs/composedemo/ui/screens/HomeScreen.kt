@@ -7,6 +7,7 @@ import dev.flyingpigs.composedemo.ui.samples.ShowLazyRowSample
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,7 +29,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(contentVisible: Boolean) {
     var showContent by remember { mutableStateOf(false) }
     var name by remember { mutableStateOf("") }
     var submittedName by remember { mutableStateOf("") }
@@ -40,12 +41,17 @@ fun HomeScreen() {
         },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Row {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Logo(modifier = Modifier.size(32.dp))
             Logo(modifier = Modifier.size(64.dp))
         }
 
         Text("Hello $submittedName")
+        if (contentVisible) AnimatedVisibility(
+            visible = contentVisible,
+        ) {
+            Text("Content Visible")
+        }
         AnimatedVisibility(showContent) {
             val greeting = remember { Greeting().greet() }
             Column(
