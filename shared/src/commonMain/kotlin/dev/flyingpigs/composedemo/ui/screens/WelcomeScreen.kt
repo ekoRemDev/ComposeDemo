@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import dev.flyingpigs.composedemo.BuildConfig
 import dev.flyingpigs.composedemo.ui.components.Logo
 
 /**
@@ -51,5 +52,11 @@ fun WelcomeScreen(onContinue: () -> Unit) {
         Button(onClick = onContinue) {
             Text("Get Started")
         }
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = "Version ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
+            style = MaterialTheme.typography.bodySmall,
+            textAlign = TextAlign.Center,
+        )
     }
 }

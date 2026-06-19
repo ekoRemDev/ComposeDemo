@@ -15,6 +15,9 @@ This README is the index/roadmap; each file below is a focused deep dive capture
 as questions come up.
 
 - [navigation-screen-order.md](navigation-screen-order.md) — what defines which screen shows, and in which order (`startDestination` vs `composable<>` vs `navigate()`).
+- [ios-change-app-name.md](ios-change-app-name.md) — change the iOS home-screen app name via `CFBundleDisplayName` (and why not to touch `PRODUCT_NAME`).
+- [app-versioning.md](app-versioning.md) — how versioning works in KMP vs Flutter's pubspec.yaml; `gradle.properties` single-source setup for Android.
+- [show-version-in-shared-ui.md](show-version-in-shared-ui.md) — display the app version in shared Compose UI via a Gradle-generated `BuildConfig.kt`.
 
 ---
 

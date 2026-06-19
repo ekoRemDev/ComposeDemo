@@ -30,8 +30,8 @@ android {
         applicationId = "dev.flyingpigs.composedemo"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = providers.gradleProperty("app.versionCode").get().toInt()
+        versionName = providers.gradleProperty("app.versionName").get()
     }
     packaging {
         resources {

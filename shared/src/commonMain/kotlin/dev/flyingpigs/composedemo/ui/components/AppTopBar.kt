@@ -37,7 +37,7 @@ fun AppTopBar() {
 
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
-        containerColor = Color.Magenta, scrolledContainerColor = Color.Cyan
+        containerColor = Color.DarkGray, scrolledContainerColor = Color.Cyan
     ),
         title = {
             Text(

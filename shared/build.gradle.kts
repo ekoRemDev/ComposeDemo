@@ -9,6 +9,38 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
 }
 
+// Generates BuildConfig.kt into commonMain from the single-source app version in
+// gradle.properties, so shared Compose code can read the version at runtime.
+// One edit in gradle.properties → Android versionName/Code AND this constant.
+val appVersionName = providers.gradleProperty("app.versionName")
+val appVersionCode = providers.gradleProperty("app.versionCode")
+
+val generateBuildConfig by tasks.registering {
+    val outputDir = layout.buildDirectory.dir("generated/buildConfig/kotlin")
+    val versionName = appVersionName
+    val versionCode = appVersionCode
+    outputs.dir(outputDir)
+    // Re-run the task whenever the version values change.
+    inputs.property("versionName", appVersionName.get())
+    inputs.property("versionCode", appVersionCode.get())
+    doLast {
+        val pkgDir = outputDir.get().asFile.resolve("dev/flyingpigs/composedemo")
+        pkgDir.mkdirs()
+        pkgDir.resolve("BuildConfig.kt").writeText(
+            """
+            |package dev.flyingpigs.composedemo
+            |
+            |/** Generated from gradle.properties — do not edit by hand. */
+            |object BuildConfig {
+            |    const val VERSION_NAME: String = "${versionName.get()}"
+            |    const val VERSION_CODE: Int = ${versionCode.get()}
+            |}
+            |
+            """.trimMargin()
+        )
+    }
+}
+
 kotlin {
     listOf(
         iosArm64(),
@@ -48,6 +80,9 @@ kotlin {
     }
 
     sourceSets {
+        commonMain {
+            kotlin.srcDir(generateBuildConfig)
+        }
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
         }
