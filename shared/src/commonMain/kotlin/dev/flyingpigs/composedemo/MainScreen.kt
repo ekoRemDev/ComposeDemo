@@ -49,12 +49,12 @@ import dev.flyingpigs.composedemo.ui.screens.FavoriteDetailScreen
  * the five tabs, separate from the root navController.
  */
 @Composable
-fun MainScreen() {
+fun MainScreen(onLogout: () -> Unit) {
     val navController = rememberNavController()
     var isVisible by remember { mutableStateOf(true) }
 
     Scaffold(
-        topBar = { AppTopBar() },
+        topBar = { AppTopBar(onLogout = onLogout) },
         bottomBar = {
             AppBottomBar(
                 navController = navController,

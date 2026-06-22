@@ -3,7 +3,6 @@ package dev.flyingpigs.composedemo.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
-import dev.flyingpigs.composedemo.ui.samples.ShowAlertDialogSample
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -27,12 +26,17 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun AppTopBar() {
+fun AppTopBar(onLogout: () -> Unit) {
     var showDialog by remember { mutableStateOf(false) }
 
     if (showDialog) {
-        ShowAlertDialogSample(
-            showDialog = showDialog, onDismiss = { showDialog = false })
+        LogoutDialog(
+            onConfirm = {
+                showDialog = false
+                onLogout()
+            },
+            onDismiss = { showDialog = false },
+        )
     }
 
     TopAppBar(

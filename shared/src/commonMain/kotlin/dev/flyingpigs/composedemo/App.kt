@@ -6,9 +6,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dev.flyingpigs.composedemo.ui.navigation.Login
 import dev.flyingpigs.composedemo.ui.navigation.Main
 import dev.flyingpigs.composedemo.ui.navigation.Splash
 import dev.flyingpigs.composedemo.ui.navigation.Welcome
+import dev.flyingpigs.composedemo.ui.screens.LoginScreen
 import dev.flyingpigs.composedemo.ui.screens.SplashScreen
 import dev.flyingpigs.composedemo.ui.screens.WelcomeScreen
 
@@ -46,14 +48,30 @@ fun App() {
             composable<Welcome> {
                 WelcomeScreen(
                     onContinue = {
-                        rootNavController.navigate(Main) {
-                            popUpTo(Welcome) { inclusive = true }
+                        rootNavController.navigate(Login) {
+                            popUpTo(Login) { inclusive = true }
                         }
                     },
                 )
             }
+            composable<Login> {
+                LoginScreen(
+                    onContinue = {
+                        rootNavController.navigate(Main) {
+                            popUpTo(Welcome) { inclusive = true }
+                        }
+                    },
+
+                    )
+            }
             composable<Main> {
-                MainScreen()
+                MainScreen(
+                    onLogout = {
+                        rootNavController.navigate(Login) {
+                            popUpTo(Main) { inclusive = true }
+                        }
+                    },
+                )
             }
         }
     }
