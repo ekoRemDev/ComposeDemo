@@ -18,11 +18,11 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
-import dev.flyingpigs.composedemo.ui.navigation.FavoritesTab
-import dev.flyingpigs.composedemo.ui.navigation.HomeTab
-import dev.flyingpigs.composedemo.ui.navigation.ProfileTab
-import dev.flyingpigs.composedemo.ui.navigation.SearchTab
-import dev.flyingpigs.composedemo.ui.navigation.SettingsTab
+import dev.flyingpigs.composedemo.core.navigation.FavoritesTab
+import dev.flyingpigs.composedemo.core.navigation.HomeTab
+import dev.flyingpigs.composedemo.core.navigation.ProfileTab
+import dev.flyingpigs.composedemo.core.navigation.SearchTab
+import dev.flyingpigs.composedemo.core.navigation.SettingsTab
 
 data class BottomTab(
     val label: String,

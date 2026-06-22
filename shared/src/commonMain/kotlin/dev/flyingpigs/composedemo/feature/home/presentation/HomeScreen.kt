@@ -1,13 +1,12 @@
-package dev.flyingpigs.composedemo.ui.screens
+package dev.flyingpigs.composedemo.feature.home.presentation
 
 import dev.flyingpigs.composedemo.domain.Greeting
 import dev.flyingpigs.composedemo.ui.components.GreetingLabel
 import dev.flyingpigs.composedemo.ui.components.Logo
-import dev.flyingpigs.composedemo.ui.samples.ShowLazyRowSample
+import dev.flyingpigs.composedemo.ui.components.ShowLazyRowSample
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize

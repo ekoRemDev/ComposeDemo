@@ -6,13 +6,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import dev.flyingpigs.composedemo.ui.navigation.Login
-import dev.flyingpigs.composedemo.ui.navigation.Main
-import dev.flyingpigs.composedemo.ui.navigation.Splash
-import dev.flyingpigs.composedemo.ui.navigation.Welcome
-import dev.flyingpigs.composedemo.ui.screens.LoginScreen
-import dev.flyingpigs.composedemo.ui.screens.SplashScreen
-import dev.flyingpigs.composedemo.ui.screens.WelcomeScreen
+import dev.flyingpigs.composedemo.core.di.appModule
+import dev.flyingpigs.composedemo.core.navigation.Login
+import dev.flyingpigs.composedemo.core.navigation.Main
+import dev.flyingpigs.composedemo.core.navigation.Splash
+import dev.flyingpigs.composedemo.core.navigation.Welcome
+import dev.flyingpigs.composedemo.feature.login.presentation.LoginScreen
+import dev.flyingpigs.composedemo.feature.splash.presentation.SplashScreen
+import dev.flyingpigs.composedemo.feature.welcome.presentation.WelcomeScreen
+import org.koin.compose.KoinApplication
 
 /**
  * Root router. Three full-screen, chrome-less destinations:
@@ -31,11 +33,15 @@ import dev.flyingpigs.composedemo.ui.screens.WelcomeScreen
 fun App() {
     val rootNavController = rememberNavController()
 
-    MaterialTheme {
-        NavHost(
-            navController = rootNavController,
-            startDestination = Splash,
-        ) {
+    // Start Koin once for the whole app and make the graph available to every
+    // composable below (koinViewModel() resolves from here). Works on all
+    // platforms from this single common entry point — no per-platform setup.
+    KoinApplication(application = { modules(appModule) }) {
+        MaterialTheme {
+            NavHost(
+                navController = rootNavController,
+                startDestination = Splash,
+            ) {
             composable<Splash> {
                 SplashScreen(
                     onTimeout = {
@@ -72,6 +78,7 @@ fun App() {
                         }
                     },
                 )
+            }
             }
         }
     }

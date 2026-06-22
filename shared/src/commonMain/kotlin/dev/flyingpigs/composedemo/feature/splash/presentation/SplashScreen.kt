@@ -1,4 +1,4 @@
-package dev.flyingpigs.composedemo.ui.screens
+package dev.flyingpigs.composedemo.feature.splash.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

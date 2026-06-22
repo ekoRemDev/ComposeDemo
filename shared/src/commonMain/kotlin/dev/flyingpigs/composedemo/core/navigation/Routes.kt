@@ -1,4 +1,4 @@
-package dev.flyingpigs.composedemo.ui.navigation
+package dev.flyingpigs.composedemo.core.navigation
 
 import kotlinx.serialization.Serializable
 
@@ -41,4 +41,3 @@ object Settings
 
 @Serializable
 data class FavoriteDetail(val name: String)
-

@@ -1,4 +1,4 @@
-package dev.flyingpigs.composedemo.ui.screens
+package dev.flyingpigs.composedemo.feature.favorites.presentation
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text

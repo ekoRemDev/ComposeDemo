@@ -4,11 +4,11 @@ import dev.flyingpigs.composedemo.ui.components.AppBottomBar
 import dev.flyingpigs.composedemo.ui.components.AppFloatingActionButton
 import dev.flyingpigs.composedemo.ui.components.AppTopBar
 import dev.flyingpigs.composedemo.ui.components.tabIndexOf
-import dev.flyingpigs.composedemo.ui.screens.FavoritesScreen
-import dev.flyingpigs.composedemo.ui.screens.HomeScreen
-import dev.flyingpigs.composedemo.ui.screens.ProfileScreen
-import dev.flyingpigs.composedemo.ui.screens.SearchScreen
-import dev.flyingpigs.composedemo.ui.screens.SettingsScreen
+import dev.flyingpigs.composedemo.feature.favorites.presentation.FavoritesScreen
+import dev.flyingpigs.composedemo.feature.home.presentation.HomeScreen
+import dev.flyingpigs.composedemo.feature.profile.presentation.ProfileScreen
+import dev.flyingpigs.composedemo.feature.search.presentation.SearchScreen
+import dev.flyingpigs.composedemo.feature.settings.presentation.SettingsScreen
 
 import androidx.compose.animation.AnimatedContentTransitionScope.SlideDirection
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,18 +27,18 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import dev.flyingpigs.composedemo.ui.navigation.FavoriteDetail
-import dev.flyingpigs.composedemo.ui.navigation.Favorites
-import dev.flyingpigs.composedemo.ui.navigation.FavoritesTab
-import dev.flyingpigs.composedemo.ui.navigation.Home
-import dev.flyingpigs.composedemo.ui.navigation.HomeTab
-import dev.flyingpigs.composedemo.ui.navigation.Profile
-import dev.flyingpigs.composedemo.ui.navigation.ProfileTab
-import dev.flyingpigs.composedemo.ui.navigation.Search
-import dev.flyingpigs.composedemo.ui.navigation.SearchTab
-import dev.flyingpigs.composedemo.ui.navigation.Settings
-import dev.flyingpigs.composedemo.ui.navigation.SettingsTab
-import dev.flyingpigs.composedemo.ui.screens.FavoriteDetailScreen
+import dev.flyingpigs.composedemo.core.navigation.FavoriteDetail
+import dev.flyingpigs.composedemo.core.navigation.Favorites
+import dev.flyingpigs.composedemo.core.navigation.FavoritesTab
+import dev.flyingpigs.composedemo.core.navigation.Home
+import dev.flyingpigs.composedemo.core.navigation.HomeTab
+import dev.flyingpigs.composedemo.core.navigation.Profile
+import dev.flyingpigs.composedemo.core.navigation.ProfileTab
+import dev.flyingpigs.composedemo.core.navigation.Search
+import dev.flyingpigs.composedemo.core.navigation.SearchTab
+import dev.flyingpigs.composedemo.core.navigation.Settings
+import dev.flyingpigs.composedemo.core.navigation.SettingsTab
+import dev.flyingpigs.composedemo.feature.favorites.presentation.FavoriteDetailScreen
 
 /**
  * The main app shell: top bar, bottom navigation, FAB, and the tabbed NavHost.

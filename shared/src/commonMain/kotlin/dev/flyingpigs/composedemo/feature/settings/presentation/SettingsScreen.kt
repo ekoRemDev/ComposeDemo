@@ -1,4 +1,4 @@
-package dev.flyingpigs.composedemo.ui.screens
+package dev.flyingpigs.composedemo.feature.settings.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
